@@ -5,3 +5,25 @@
   <app-hello3 title='인사말' [messages]='list'></app-hello3>
   <app-hello4></app-hello4>
 
+
+  <h1>학생 목록</h1>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>학번</th>
+        <th>이름</th>
+        <th>이메일</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{ s.id }}</td>
+        <td>{{ s.studentNo }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
