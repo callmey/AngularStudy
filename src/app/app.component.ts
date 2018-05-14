@@ -20,4 +20,12 @@ export class AppComponent {
   selectStudent(student: Student) {
     this.selectedStudent = student;
   }
+
+  createStudent() {
+    let index = this.students.length - 1;
+    let id = this.students[index].id + 1;
+    let student = new Student(id, "", "", "");
+    this.selectedStudent = student;
+    this.students.push(student);
+  }
 }
