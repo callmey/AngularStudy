@@ -28,4 +28,9 @@ export class AppComponent {
     this.selectedStudent = student;
     this.students.push(student);
   }
+
+  close() {
+    this.selectedStudent = null;
+  }  
+
 }
