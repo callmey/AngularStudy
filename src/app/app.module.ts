@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { Hello1Component } from './hello1/hello1.component';
@@ -15,7 +16,10 @@ import { Hello4Component } from './hello4/hello4.component';
   ],
 
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
