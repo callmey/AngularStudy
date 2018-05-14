@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let s of students">
+      <tr *ngFor="let s of students" (click)="selectStudent(s)">
         <td>{{ s.id }}</td>
         <td>{{ s.studentNo }}</td>
         <td>{{ s.name }}</td>
@@ -26,4 +26,23 @@
       </tr>
     </tbody>
   </table>
-  
+
+  <hr />
+  <div *ngIf="selectedStudent">
+    <div class="form-group">
+      <label>id</label>
+      <input type="text" value="{{ selectedStudent.id }}" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+      <label>학번</label>
+      <input type="text" [(ngModel)]="selectedStudent.studentNo" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>이름</label>
+      <input type="text" [(ngModel)]="selectedStudent.name" class="form-control" />
+    </div>
+    <div class="form-group">
+    <label>이메일</label>
+    <input type="text" [(ngModel)]="selectedStudent.email" class="form-control" />
+    </div>
+  </div>
