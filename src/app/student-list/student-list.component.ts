@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
-import { Student } from './Student';
+import { Component, OnInit } from '@angular/core';
+import { Student } from '../Student';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-student-list',
+  templateUrl: './student-list.component.html',
+  styleUrls: ['./student-list.component.css']
 })
-export class AppComponent {
-  title = 'app works!';
-  list = ['안녕하세요', 'hello'];
+export class StudentListComponent implements OnInit {
   selectedStudent: Student;
 
   students: Student[] = [
@@ -17,8 +15,9 @@ export class AppComponent {
     new Student(3, '201132053', '전우치', 'jwc@skhu.ac.kr'),
   ];
 
-  selectStudent(student: Student) {
-    this.selectedStudent = student;
+  constructor() { }
+
+  ngOnInit() {
   }
 
   createStudent() {
@@ -27,7 +26,7 @@ export class AppComponent {
     let student = new Student(id, "", "", "");
     this.selectedStudent = student;
     this.students.push(student);
-  }
+  }  
 
   close() {
     this.selectedStudent = null;
