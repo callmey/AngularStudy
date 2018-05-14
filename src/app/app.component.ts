@@ -33,4 +33,14 @@ export class AppComponent {
     this.selectedStudent = null;
   }  
 
+  deleteStudent() {
+    if (confirm("삭제하시겠습니까?")) {
+      for (let i = 0; i < this.students.length; ++i)
+        if (this.students[i] == this.selectedStudent) {
+          this.students.splice(i, 1);
+          break;
+        }
+      this.selectedStudent = null;
+    }
+
 }
