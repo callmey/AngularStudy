@@ -19,7 +19,7 @@ export class Hello4Component implements OnInit {
 }
 
 class Message {
-  laguage: string;
+  language: string;
   content: string;
 
   constructor(language : string, content: string) {
