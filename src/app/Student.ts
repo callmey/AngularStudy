@@ -1,3 +1,5 @@
+import { Department } from './Department';
+
 export class Student {
     id: number;
     studentNo: string;
