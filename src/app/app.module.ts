@@ -28,7 +28,8 @@ import { StudentComponent } from './student/student.component';
     RouterModule.forRoot([
       { path: '', redirectTo: '/hello', pathMatch: 'full' },
       { path: 'hello', component: HelloComponent },
-      { path: 'studentList1', component: StudentList1Component }
+      { path: 'studentList1', component: StudentList1Component },
+      { path: 'student/:id', component: StudentComponent }
     ])
 
   ],
