@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label>id</label>
+    <input type="text" [value]="student.id" class="form-control" disabled />
+  </div>
+  <div class="form-group">
+    <label>학번</label>
+    <input type="text" [(ngModel)]="student.studentNumber" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>이름</label>
+    <input type="text" [(ngModel)]="student.name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>학과</label>
+    <select [(ngModel)]="student.department.id" class="form-control">
+      <option *ngFor="let d of departments" [ngValue]="d.id">
+        {{ d.departmentName }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <a class="btn btn-default" href="/studentList1">목록으로</a>
+  </div>
+  
