@@ -7,7 +7,9 @@ import { Student } from '../Student';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
+  selectedIndex: number = -1;
   selectedStudent: Student;
+
 
   students: Student[] = [
     new Student(1, '201132051', '홍길동', 'hgd@skhu.ac.kr'),
@@ -20,26 +22,37 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectStudent(student: Student, index: number) {
+    this.selectedStudent = Object.create(student);
+    this.selectedIndex = index;
+  }
+
   createStudent() {
     let index = this.students.length - 1;
     let id = this.students[index].id + 1;
-    let student = new Student(id, "", "", "");
-    this.selectedStudent = student;
-    this.students.push(student);
+    this.selectedStudent = new Student(id, "", "", "");
+    this.selectedIndex = -1;
   }  
 
   close() {
     this.selectedStudent = null;
-  }  
+    this.selectedIndex = -1;
+  }
 
+  save() {
+    if (this.selectedIndex == -1)
+      this.students.push(this.selectedStudent);
+    else 
+      this.students[this.selectedIndex] = this.selectedStudent;
+    this.selectedStudent = null;
+    this.selectedIndex = -1;
+  }
+  
   deleteStudent() {
     if (confirm("삭제하시겠습니까?")) {
-      for (let i = 0; i < this.students.length; ++i)
-        if (this.students[i] == this.selectedStudent) {
-          this.students.splice(i, 1);
-          break;
-        }
+      this.students.splice(this.selectedIndex, 1);
       this.selectedStudent = null;
+      this.selectedIndex = -1;
     }
   }
 }
