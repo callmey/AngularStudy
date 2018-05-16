@@ -24,7 +24,12 @@ import { StudentComponent } from './student/student.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: '/hello', pathMatch: 'full' },
+      { path: 'hello', component: HelloComponent },
+      { path: 'studentList1', component: StudentList1Component }
+    ])
 
   ],
   providers: [ServerService],
