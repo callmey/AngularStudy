@@ -11,7 +11,7 @@ import { ServerService } from '../server.service';
 export class StudentList1Component implements OnInit {
   private serverService: ServerService;
   private students: Student[];
-  
+    
   constructor(serverService: ServerService, private router: Router) { 
     this.serverService = serverService;
   }
