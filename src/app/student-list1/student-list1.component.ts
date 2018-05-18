@@ -23,8 +23,10 @@ export class StudentList1Component implements OnInit {
   }
 
   gotoStudent(s: Student) {
-    this.router.navigate(['/student', s.id]);
+    let id = (s) ? s.id : 0;
+    this.router.navigate(['/student', id]);
   }
+
 
 } 
 

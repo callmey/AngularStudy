@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Student } from '../Student';
 import { Department } from '../Department';
@@ -13,7 +14,7 @@ export class StudentComponent implements OnInit {
   private student: Student;
   private departments: Department[];
   
-  constructor(private serverService: ServerService, private route: ActivatedRoute) { 
+  constructor(private serverService: ServerService, private route: ActivatedRoute, private router: Router ) { 
   }
 
   ngOnInit() {
@@ -33,7 +34,15 @@ export class StudentComponent implements OnInit {
   save() {
     this.serverService
       .saveStudent(this.student)
-      .then(message => alert(message));
+      .then(apiResult => 
+        {
+          if (apiResult.success)
+            this.router.navigate(['/studentList1']);
+          else 
+            alert(apiResult.message);
+        }
+      );
   }
+
 }
 

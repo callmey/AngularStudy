@@ -3,6 +3,7 @@ import { Http }       from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Student } from './Student';
 import { Department } from './Department';
+import { APIResult } from './APIResult';
 
 @Injectable()
 export class ServerService {
@@ -27,16 +28,14 @@ export class ServerService {
               .then(response => response.json() as Student[])
               .catch(this.handleError);
   }
-  
-  saveStudent(student: Student): Promise<string> {
+
+  saveStudent(student: Student): Promise<APIResult> {
     let url = this.URL + 'student';
     return this.http.post(url, student)
               .toPromise()
-              .then(response => 
-                response.text() as string)
+              .then(response => response.json() as APIResult)
               .catch(this.handleError);
   }
-
 
   getDepartments(): Promise<Department[]> {
     return this.http.get(this.URL + "departments")
