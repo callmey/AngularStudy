@@ -1,4 +1,6 @@
-<div class="form-group">
+<div *ngIf="student">
+  <h1>{{student.name}}</h1>
+  <div class="form-group">
     <label>id</label>
     <input type="text" [value]="student.id" class="form-control" disabled />
   </div>
@@ -10,7 +12,7 @@
     <label>이름</label>
     <input type="text" [(ngModel)]="student.name" class="form-control" />
   </div>
-  <div class="form-group">
+  <div class="form-group" *ngIf="departments">
     <label>학과</label>
     <select [(ngModel)]="student.department.id" class="form-control">
       <option *ngFor="let d of departments" [ngValue]="d.id">
@@ -19,6 +21,7 @@
     </select>
   </div>
   <div>
+      <a class="btn btn-primary" (click)="save()">저장</a>
     <a class="btn btn-default" href="/studentList1">목록으로</a>
   </div>
-  
+</div>

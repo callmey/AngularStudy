@@ -27,6 +27,16 @@ export class ServerService {
               .then(response => response.json() as Student[])
               .catch(this.handleError);
   }
+  
+  saveStudent(student: Student): Promise<string> {
+    let url = this.URL + 'student';
+    return this.http.post(url, student)
+              .toPromise()
+              .then(response => 
+                response.text() as string)
+              .catch(this.handleError);
+  }
+
 
   getDepartments(): Promise<Department[]> {
     return this.http.get(this.URL + "departments")

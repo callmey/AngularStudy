@@ -10,25 +10,30 @@ import { ServerService } from '../server.service';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  private serverService: ServerService;
-  private route: ActivatedRoute;  
   private student: Student;
   private departments: Department[];
   
-  constructor(serverService: ServerService, route: ActivatedRoute ) { 
-    this.serverService = serverService;
-    this.route = route;
+  constructor(private serverService: ServerService, private route: ActivatedRoute) { 
   }
 
   ngOnInit() {
-    this.serverService
-      .getDepartments()
-      .then(departments => 
-        this.departments = departments);
+    this.serverService.getDepartments()
+      .then(departments => this.departments = departments);
     let id = this.route.snapshot.params['id'];
+    if (id == 0) {
+      this.student = new Student(0, "", "","");
+      this.student.id = 0;
+      this.student.department = new Department();
+    } else {
+      this.serverService.getStudent(id)
+        .then(student => this.student = student);
+    }
+  }
+
+  save() {
     this.serverService
-      .getStudent(id)
-      .then(student => 
-        this.student = student);
+      .saveStudent(this.student)
+      .then(message => alert(message));
   }
 }
+
